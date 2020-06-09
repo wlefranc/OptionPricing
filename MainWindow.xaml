@@ -1,0 +1,116 @@
+﻿<Window x:Class="OptionPricing.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:MyWPFApp"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="900">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="9*"/>
+            <RowDefinition Height="1*"/>
+        </Grid.RowDefinitions>
+        <Label Content="Pricer for European options" HorizontalAlignment="Center" VerticalAlignment="Center"
+               FontSize="40"/>
+        <Label Content="Stock Price ($)" Margin="5,5,0,0"/>
+        <TextBox HorizontalAlignment="Left"
+                 Name="StockPrice"
+                 Height="23"
+                 Margin="10,25,0,0"
+                 TextWrapping="Wrap"
+                 Text=""
+                 VerticalAlignment="Top"
+                 Width="120"/>
+        <Label Content="Exercice Price ($)" Margin="5,50,0,0"/>
+        <TextBox HorizontalAlignment="Left"
+                 Name="ExercicePrice"
+                 Height="23"
+                 Margin="10,75,0,0"
+                 TextWrapping="Wrap"
+                 Text=""
+                 VerticalAlignment="Top"
+                 Width="120"/>
+        <Label Content="Volatility (%)" Margin="5,105,0,0"/>
+        <TextBox HorizontalAlignment="Left"
+                 Name="Volatility"
+                 Height="23"
+                 Margin="10,125,0,0"
+                 TextWrapping="Wrap"
+                 Text=""
+                 VerticalAlignment="Top"
+                 Width="120"/>
+        <Label Content="Time To Expiration (years)" Margin="5,155,0,0"/>
+        <TextBox HorizontalAlignment="Left"
+                 Name="TimeToExpiration"
+                 Height="23"
+                 Margin="10,175,0,0"
+                 TextWrapping="Wrap"
+                 Text=""
+                 VerticalAlignment="Top"
+                 Width="120"/>
+        <Label Content="Interest Rate (%)" Margin="5,205,0,0"/>
+        <TextBox HorizontalAlignment="Left"
+                 Name="InterestRate"
+                 Height="23"
+                 Margin="10,225,0,0"
+                 TextWrapping="Wrap"
+                 Text=""
+                 VerticalAlignment="Top"
+                 Width="120"/>
+        <CheckBox x:Name="Put" Margin="10,260,0,0" 
+            Content="Put"
+            Checked="HandleCheckPut" Unchecked="HandleUncheckedPut"/>
+        <CheckBox x:Name="Call" Margin="10,280,0,0" 
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            Content="Call"
+            Checked="HandleCheckCall" Unchecked="HandleUncheckedCall"/>
+
+        <StackPanel>      
+            <RadioButton Name="MonteCarlo" Checked="HandleChooseMonteCarlo"
+                Margin="10,300,0,0">Monte-Carlo</RadioButton>
+            <TextBox HorizontalAlignment="Left"
+                 VerticalAlignment="Top"
+                 Name="NIter"
+                 Height="23"
+                 Margin="10,0,0,0"
+                 TextWrapping="Wrap"
+                 Text="1000000"
+                 Visibility="Hidden"
+                 Width="120"
+                 TextChanged="HandleChangeNIter"/>
+            <RadioButton Name="BlackScholes" Checked="HandleChooseBlackScholes"
+                Margin="10,0,0,0" IsChecked="True">Black-Scholes</RadioButton>
+        </StackPanel>
+
+        <Button Content="Run" Margin="10,360,0,0" FontSize="20" Click="Button_Click" Height="50" Width="150"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"/>
+
+        <Label Content="Put price ($)" Margin="0,5,20,0"
+                HorizontalAlignment="Right"
+                VerticalAlignment="Top"/>
+        <TextBox HorizontalAlignment="Right"
+                 Name="PutResult"
+                 IsReadOnly="True"
+                 Height="23"
+                 Margin="0,25,10,0"
+                 TextWrapping="Wrap"
+                 Text=""
+                 VerticalAlignment="Top"
+                 Width="100"/>
+        <Label Content="Call price ($)" Margin="0,50,20,0"
+                HorizontalAlignment="Right"
+                VerticalAlignment="Top"/>
+        <TextBox HorizontalAlignment="Right"
+                 Name="CallResult"
+                 IsReadOnly="True"
+                 Height="23"
+                 Margin="0,75,10,0"
+                 TextWrapping="Wrap"
+                 Text=""
+                 VerticalAlignment="Top"
+                 Width="100"/>
+    </Grid>
+</Window>
